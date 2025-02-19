@@ -1,5 +1,5 @@
 <?php
-$subpage = isset($_GET['subpage']) ? $_GET['subpage'] : 'sejarah';
+$subpage = isset($_GET['subpage']) ? $_GET['subpage'] : 'pelayanan_desa';
 $id = isset($_GET['id']) ? $_GET['id'] : 1;
 ?>
 
@@ -46,12 +46,8 @@ $id = isset($_GET['id']) ? $_GET['id'] : 1;
     }
 </style>
 <ul class="nav nav-tabs">
-    <li class="nav-item"><a class="nav-link actived" href="#" data-subpage="sejarah">Sejarah Desa</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-subpage="visi_misi">Visi Misi</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-subpage="struktur_desa">Struktur Desa</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-subpage="profil_kepala_desa">Profil Kepala Desa</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-subpage="profil_perangkat_desa">Profil Perangkat Desa</a></li>
-    <li class="nav-item"><a class="nav-link" href="#" data-subpage="monografi_kependudukan">Monografi Kependudukan</a></li>
+    <li class="nav-item"><a class="nav-link actived" href="#" data-subpage="pelayanan_desa">Layanan Desa</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-subpage="persyaratan_surat">Persyaratan Surat</a></li>
 </ul>
 <div class="mt-3" id="subpage-content">
     <?php include $subpage . ".php"; ?>
@@ -82,11 +78,11 @@ $id = isset($_GET['id']) ? $_GET['id'] : 1;
                 spinner.style.display = 'block';
 
                 // Update URL without reloading the page
-                history.pushState(null, '', `?page=profile_desa/profil_desa&subpage=${subpage}${id ? '&id=' + id : ''}`);
+                history.pushState(null, '', `?page=layanan_desa/layanan_desa&subpage=${subpage}${id ? '&id=' + id : ''}`);
 
                 // Load the subpage content using AJAX
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', `profile_desa/${subpage}.php${id ? '?id=' + id : ''}`, true);
+                xhr.open('GET', `layanan_desa/${subpage}.php${id ? '?id=' + id : ''}`, true);
                 xhr.onload = function() {
                     // Hide spinner
                     spinner.style.display = 'none';
@@ -102,7 +98,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 1;
         });
 
         // Load the initial subpage content based on the URL
-        const initialSubpage = new URLSearchParams(window.location.search).get('subpage') || 'sejarah';
+        const initialSubpage = new URLSearchParams(window.location.search).get('subpage') || 'pelayanan_desa';
         const id = new URLSearchParams(window.location.search).get('id') || '';
         const initialNavLink = document.querySelector(`.nav-link[data-subpage="${initialSubpage}${id ? '&id=' + id : ''}"]`);
         initialNavLink.click();

@@ -50,8 +50,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'profile_desa/profil_desa';
     <div class="sidebar">
         <h4 class="text-center text-light">Admin Panel</h4>
         <a href="admin_dashboard.php?page=profile_desa/profil_desa">Profil Desa</a>
-        <a href="admin_dashboard.php?page=layanan_desa/layanan">Layanan Desa</a>
-        <a href="admin_dashboard.php?page=lembaga_desa/lembaga">Lembaga Desa</a>
+        <a href="admin_dashboard.php?page=layanan_desa/layanan_desa">Layanan Desa</a>
+        <a href="admin_dashboard.php?page=lembaga_desa/lembaga_desa">Lembaga Desa</a>
         <a href="admin_dashboard.php?page=transparansi/transparansi">Transparansi Desa</a>
         <a href="admin_dashboard.php?page=kontak/kontak">Kontak Admin</a>
         <a href="logout.php" class="text-danger">Logout</a>

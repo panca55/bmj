@@ -2,8 +2,8 @@
 session_start();
 
 // Jika pengguna sudah login, arahkan ke dashboard
-if (isset($_SESSION['user'])) {
-    header("Location: admin.php");
+if (isset($_SESSION['admin_id'])) {
+    header("Location: admin_dashboard.php");
     exit();
 } else {
     // Jika belum login, arahkan ke halaman login
