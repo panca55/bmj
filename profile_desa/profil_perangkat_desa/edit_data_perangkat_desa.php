@@ -47,13 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $jenis_kelamin = $_POST['jenis_kelamin'];
             $jabatan = $_POST['jabatan'];
             $alamat = $_POST['alamat'];
-            
+
             // Update data
             $stmt = $conn->prepare("UPDATE tb_perangkat_desa SET nama=?, tempat_tanggal_lahir=?, jenis_kelamin=?, jabatan=?, alamat=?, foto=? WHERE id_perangkat_desa=?");
             $stmt->bind_param("ssssssi", $nama, $tempat_tanggal_lahir, $jenis_kelamin, $jabatan, $alamat, $foto, $id);
             $stmt->execute();
             $stmt->close();
-            header("Location: /admin_dashboard.php?page=profile_desa/profil_desa&subpage=profil_perangkat_desa");
+            header("Location: /admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=profil_perangkat_desa");
             exit();
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -100,6 +100,6 @@ $conn->close();
             <input type="file" name="foto" class="form-control" accept="image/*" required>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="/admin_dashboard.php?page=profile_desa/profil_desa&subpage=profil_perangkat_desa" class="btn btn-secondary ms-3">Batal</a>
+        <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=profil_perangkat_desa" class="btn btn-secondary ms-3">Batal</a>
     </form>
 </div>

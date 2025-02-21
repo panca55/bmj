@@ -1,12 +1,22 @@
 <?php
 session_start();
 
-// Jika pengguna sudah login, arahkan ke dashboard
-if (isset($_SESSION['admin_id'])) {
-    header("Location: admin_dashboard.php");
-    exit();
+// Ambil path dari URL
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// Jika pengguna mengakses URL dengan 'admin'
+if (strpos($path, 'admin') !== false) {
+    // Jika pengguna sudah login, arahkan ke admin_dashboard.php
+    if (isset($_SESSION['admin_id'])) {
+        header("Location: admin/admin_dashboard.php");
+        exit();
+    } else {
+        // Jika belum login, arahkan ke halaman login
+        header("Location: login.php");
+        exit();
+    }
 } else {
-    // Jika belum login, arahkan ke halaman login
-    header("Location: login.php");
+    // Default endpoint mengarah ke dashboard.php
+    header("Location: dashboard.php");
     exit();
 }

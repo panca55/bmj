@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             $stmt->execute();
             $stmt->close();
-            header("Location: /admin_dashboard.php?page=profile_desa/profil_desa&subpage=struktur_desa");
+            header("Location: /admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=struktur_desa");
             exit();
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -76,6 +76,6 @@ $conn->close();
             <input type="file" name="struktur_desa" class="form-control" accept="image/*" required>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="/admin_dashboard.php?page=profile_desa/profil_desa&subpage=struktur_desa" class="btn btn-secondary ms-3">Batal</a>
+        <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=struktur_desa" class="btn btn-secondary ms-3">Batal</a>
     </form>
 </div>

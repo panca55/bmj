@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->close();
     }
 
-    header("Location: /admin_dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi");
+    header("Location: /admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi");
     exit();
 }
 
@@ -44,6 +44,6 @@ $conn->close();
             <textarea class="form-control" name="misi_desa" required><?= htmlspecialchars($profil['misi_desa'] ?? '') ?></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="/admin_dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi" class="btn btn-secondary ms-3">Batal</a>
+        <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi" class="btn btn-secondary ms-3">Batal</a>
     </form>
 </div>
