@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        header("Location: /admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa");
+        header("Location: /dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa");
         exit();
     } else {
         echo "<script>alert('Gagal menghapus data.');</script>";
@@ -90,11 +90,11 @@ $conn->close();
                 <p class="text-wrap"><?= $nama_pasangan ?></p>
             </div>
         </div>
-        <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa/tambah_data_profil_kepala_desa"
+        <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa/tambah_data_profil_kepala_desa"
             class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
     </div>
     <div class="d-flex flex-row justify-content-end">
-        <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa/edit_data_profil_kepala_desa"
+        <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa/edit_data_profil_kepala_desa"
             class="btn btn-primary me-2">Edit</a>
         <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
             <input type="hidden" name="delete" value="<?= $id; ?>">
@@ -117,7 +117,7 @@ $conn->close();
         spinner.style.display = 'block';
 
         // Update the URL
-        window.history.pushState({}, '', 'admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa/tambah_data_profil_kepala_desa');
+        window.history.pushState({}, '', 'dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa/tambah_data_profil_kepala_desa');
 
         // Load tambah_data_profil_kepala_desa.php content using AJAX
         const xhr = new XMLHttpRequest();

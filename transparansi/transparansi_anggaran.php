@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        header("Location: /admin/admin_dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran");
+        header("Location: /dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran");
         exit();
     } else {
         echo "<script>alert('Gagal menghapus data.');</script>";
@@ -38,7 +38,7 @@ $conn->close();
         <h5>Transparansi Anggaran Desa Bumi Harjo</h5>
         <div class="pb-2 pe-2 ps-2 w-100 text-start mb-2">
             <div class="d-flex flex-row justify-content-end my-2">
-                <a href="/admin/admin_dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran/tambah_data_transparansi_anggaran"
+                <a href="/dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran/tambah_data_transparansi_anggaran"
                     class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
             </div>
             <div class="keterangan rounded-2 border-2 border-black border p-2 mb-2 text-start">
@@ -86,7 +86,7 @@ $conn->close();
         </table>
     </div>
     <div class="d-flex flex-row justify-content-end">
-        <a href="/admin/admin_dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran/edit_data_transparansi_anggaran"
+        <a href="/dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran/edit_data_transparansi_anggaran"
             class="btn btn-primary me-2">Edit</a>
         <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
             <input type="hidden" name="delete" value="<?= $id; ?>">
@@ -109,7 +109,7 @@ $conn->close();
         spinner.style.display = 'block';
 
         // Update the URL
-        window.history.pushState({}, '', 'admin/admin_dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran/tambah_data_transparansi_anggaran');
+        window.history.pushState({}, '', 'dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran/tambah_data_transparansi_anggaran');
 
         // Load tambah_data_transparansi_anggaran.php content using AJAX
         const xhr = new XMLHttpRequest();

@@ -1,26 +1,27 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
-
-// Ambil data persyaratan desa
-$sql = "SELECT * FROM tb_persyaratan_surat";
-$result = $conn->query($sql);
-$persyaratan_surat = [];
-while ($row = $result->fetch_assoc()) {
-    $persyaratan_surat[] = $row;
-}
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+// Ambil data kontak_admin desa dalam satu query
+$stmt = $conn->prepare("SELECT * FROM tb_persyaratan_surat WHERE id_persyaratan_surat =? LIMIT 1");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$keterangan = $row['keterangan'] ?? 'Data belum ada.';
+$file = $row['file'] ?? 'Data belum ada.';
 $conn->close();
 ?>
 
 <div class="d-flex flex-column">
-    <div class="d-flex flex-column text-center">
-        <h3 class="fw-bold">PROFIL</h3>
-        <h3>PERSYARATAN SURAT DESA BUMI HARJO</h3>
-        <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/dashboard.php?page=layanan_desa/layanan_desa&subpage=persyaratan_surat/tambah_data_persyaratan_surat" class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
+    <div class="d-flex flex-column justify-content-center text-center align-items-center mb-2">
+        <div class="border border-1 border-black py-2 w-100">
+            <h3>
+                <?= htmlspecialchars($keterangan) ?>
+            </h3>
         </div>
-        <?php foreach ($persyaratan_surat as $index => $persyaratan): ?>
-            <a href="/dashboard.php?page=layanan_desa/layanan_desa&subpage=persyaratan_surat_detail&id=<?= $persyaratan['id_persyaratan_surat'] ?>" class="w-100 border border-2 border-black text-decoration-none text-black fw-bold py-2 my-2"> <?= htmlspecialchars($persyaratan['keterangan']); ?></a>
-        <?php endforeach; ?>
+    </div>
+    <div class="d-flex flex-row justify-content-end text-center align-items-center">
+        <a href="<?= htmlspecialchars($file) ?>" class="btn btn-primary rounded-2" download>Download</a>
     </div>
 </div>
 
@@ -29,7 +30,7 @@ $conn->close();
 <div id="subpage-content"></div>
 
 <script>
-    document.getElementById('tambah-data-link').addEventListener('click', function(event) {
+    document.getElementById('crud-data-link')?.addEventListener('click', function(event) {
         event.preventDefault();
         const subpageContent = document.getElementById('subpage-content');
         const spinner = document.getElementById('loading-spinner');
@@ -38,11 +39,11 @@ $conn->close();
         spinner.style.display = 'block';
 
         // Update the URL
-        window.history.pushState({}, '', 'dashboard.php?page=layanan_desa/layanan_desa&subpage=persyaratan_surat/tambah_data_persyaratan_surat');
+        window.history.pushState({}, '', 'dashboard.php?page=kontak_admin/kontak_admin/crud_kontak_admin');
 
-        // Load tambah_data_persyaratan_surat.php content using AJAX
+        // Load crud_kontak_admin.php content using AJAX
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'layanan_desa/persyaratan_surat/tambah_data_persyaratan_surat.php', true);
+        xhr.open('GET', 'kontak_admin/kontak_admin/crud_kontak_admin', true);
         xhr.onload = function() {
             spinner.style.display = 'none';
 
@@ -62,7 +63,7 @@ $conn->close();
         spinner.style.display = 'block';
 
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'layanan_desa/persyaratan_surat.php', true);
+        xhr.open('GET', 'kontak_admin/kontak_admin.php', true);
         xhr.onload = function() {
             spinner.style.display = 'none';
 

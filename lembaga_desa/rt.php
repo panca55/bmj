@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        header("Location: /admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt");
+        header("Location: /dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt");
         exit();
     } else {
         echo "<script>alert('Gagal menghapus data.');</script>";
@@ -32,39 +32,9 @@ $conn->close();
         <h3 class="fw-bold">Daftar Nama-Nama</h3>
         <h3>Ketua Rukun Tetangga (RT)</h3>
         <h3>DESA BUMI HARJO</h3>
-        <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt/tambah_data_rt" class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
-        </div>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Jabatan</th>
-                    <th>Nama Lengkap</th>
-                    <th>Foto</th>
-                    <th>No Telp/Hp</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($rt as $index => $dataRt): ?>
-                    <tr>
-                        <td><?= $index + 1; ?></td>
-                        <td><?= htmlspecialchars($dataRt['jabatan']); ?></td>
-                        <td><?= htmlspecialchars($dataRt['nama']); ?></td>
-                        <td><img src="<?= htmlspecialchars($dataRt['foto']); ?>" alt="Foto <?= htmlspecialchars($dataRt['nama']); ?>" style="max-width: 100px; max-height: 100px;"></td>
-                        <td><?= htmlspecialchars($dataRt['hp']); ?></td>
-                        <td>
-                            <a href="/admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt/edit_data_rt&id=<?= $dataRt['id_rt']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                            <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-                                <input type="hidden" name="delete" value="<?= $dataRt['id_rt']; ?>">
-                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+            <?php foreach ($rt as $index => $dataRt): ?>
+                <a href="/dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt_detail&id=<?= $dataRt['id_rt'] ?>" class="w-100 border border-2 border-black text-decoration-none text-black fw-bold py-2 my-2"> <?= htmlspecialchars($dataRt['jabatan']); ?></a>
+            <?php endforeach; ?>
     </div>
 </div>
 
@@ -82,7 +52,7 @@ $conn->close();
         spinner.style.display = 'block';
 
         // Update the URL
-        window.history.pushState({}, '', 'admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt/tambah_data_rt');
+        window.history.pushState({}, '', 'dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt/tambah_data_rt');
 
         // Load tambah_data_rt.php content using AJAX
         const xhr = new XMLHttpRequest();

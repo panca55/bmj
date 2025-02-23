@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+include '/db_connect.php';
 
 $username = 'admin';
 $password = 'admin123'; // Password asli

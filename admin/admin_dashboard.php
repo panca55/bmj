@@ -1,7 +1,7 @@
 <?php
 include '../db_connect.php';
 session_start();
-if (!isset($_SESSION['admin_id'])) {
+if (!isset($_SESSION['id_login'])) {
     header("Location: login.php");
     exit();
 }
@@ -127,7 +127,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard/dashboard';
             <a href="admin_dashboard.php?page=transparansi/transparansi" class="<?= $page == 'transparansi/transparansi' ? 'active' : '' ?>"><i class="bi bi-bar-chart"></i>Transparansi Desa</a>
             <a href="admin_dashboard.php?page=kontak_admin/kontak_admin" class="<?= $page == 'kontak_admin/kontak_admin' ? 'active' : '' ?>"><i class="bi bi-telephone"></i>Kontak Admin</a>
         </div>
-        <a href="logout.php" class="btn btn-danger shadow-lg logout d-flex flex-row justify-content-center px-5 py-2 mx-auto end-0 start-0 mb-4"><i class="bi bi-box-arrow-right"></i>Logout</a>
+        <a href="../logout.php" class="btn btn-danger shadow-lg logout d-flex flex-row justify-content-center px-5 py-2 mx-auto end-0 start-0 mb-4"><i class="bi bi-box-arrow-right"></i>Logout</a>
     </div>
     <div class="navbar top-0" id="navbar">
         <span class="toggle-btn btn text-white border-1 border border-white" style="height: fit-content; width: fit-content; font-size: 20px;" onclick="toggleSidebar()"><i class="bi bi-list"></i></span>

@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
-            $_SESSION['admin_id'] = $row['id_login'];
-            header("Location: admin_dashboard.php");
+            $_SESSION['id_login'] = $row['id_login'];
+            header("Location: /admin/admin_dashboard.php");
             exit();
         } else {
             $error = "Password salah!";

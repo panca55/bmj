@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        header("Location: /admin/admin_dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan");
+        header("Location: /dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan");
         exit();
     } else {
         echo "<script>alert('Gagal menghapus data.');</script>";
@@ -32,7 +32,7 @@ $conn->close();
         <h3 class="fw-bold">Kalender Kegiatan</h3>
         <h3>Desa Bumi Harjo</h3>
         <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/admin/admin_dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan/tambah_data_kalender_kegiatan" class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
+            <a href="/dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan/tambah_data_kalender_kegiatan" class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
         </div>
         <table class="table table-bordered">
             <thead>
@@ -52,7 +52,7 @@ $conn->close();
                         <td><?= htmlspecialchars($kegiatan['tanggal']); ?></td>
                         <td><?= htmlspecialchars($kegiatan['kegiatan']); ?></td>
                         <td>
-                            <a href="/admin/admin_dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan/edit_data_kalender_kegiatan&id=<?= $kegiatan['id_kegiatan']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="/dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan/edit_data_kalender_kegiatan&id=<?= $kegiatan['id_kegiatan']; ?>" class="btn btn-primary btn-sm">Edit</a>
                             <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
                                 <input type="hidden" name="delete" value="<?= $kegiatan['id_kegiatan']; ?>">
                                 <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
@@ -79,7 +79,7 @@ $conn->close();
         spinner.style.display = 'block';
 
         // Update the URL
-        window.history.pushState({}, '', 'admin/admin_dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan/tambah_data_kalender_kegiatan');
+        window.history.pushState({}, '', 'dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan/tambah_data_kalender_kegiatan');
 
         // Load tambah_data_kalender_kegiatan.php content using AJAX
         const xhr = new XMLHttpRequest();

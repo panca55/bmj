@@ -1,66 +1,42 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
-
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 // Ambil data kontak_admin desa dalam satu query
-$sql = "SELECT * FROM tb_kontak LIMIT 1";
-$result = $conn->query($sql);
+$stmt = $conn->prepare("SELECT * FROM tb_rt WHERE id_rt =? LIMIT 1");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
 $row = $result->fetch_assoc();
-$email = $row['email'] ?? 'Data belum ada.';
-$facebook = $row['facebook'] ?? 'Data belum ada.';
-$instagram = $row['instagram'] ?? 'Data belum ada.';
-$id_kontak = $row['id_kontak'] ?? 0;
-
-// Hapus data jika ada request POST 'delete'
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    $idDelete = intval($_POST['delete']);
-    $stmt = $conn->prepare("UPDATE tb_kontak SET email = NULL, facebook = NULL, instagram = NULL WHERE id_kontak = ? LIMIT 1");
-    $stmt->bind_param("i", $idDelete);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Data berhasil dihapus.');</script>";
-        header("Location: /dashboard.php?page=kontak_admin/kontak_admin");
-        exit();
-    } else {
-        echo "<script>alert('Gagal menghapus data.');</script>";
-    }
-    $stmt->close();
-}
+$keterangan = $row['keterangan'] ?? 'Data belum ada.';
+$jabatan = $row['jabatan'] ?? 'Data belum ada.';
+$nama = $row['nama'] ?? 'Data belum ada.';
+$foto = $row['foto'] ?? 0;
+$hp = $row['hp'] ?? 0;
 
 $conn->close();
 ?>
 
 <div class="d-flex flex-column">
     <div class="d-flex flex-column text-center align-items-center">
-        <h3 class="border border-1 py-1 px-5 border-black" style="width: fit-content;">Kontak Person</h3>
-        <h4>Desa Bumi Harjo Kecamatan Pinang Raya</h4>
-        <h4>Kabupaten Bengkulu Utara</h4>
-        <h4>Jl. Raya Wijaya Kusuma</h4>
-        <h4>Kode Pos 38362</h4>
+        <h3 class="border border-1 py-1 px-5 border-black" style="width: fit-content;"><?= htmlspecialchars($jabatan) ?></h3>
+        <img src="<?= $foto ?>" alt="foto struktur rt">
     </div>
     <div class="d-flex flex-column text-start my-4">
         <div class="d-flex flex-row">
-            <p>E-mail &ThickSpace;</p>
+            <p>JABATAN &ThickSpace;</p>
             <p>: &ThickSpace;</p>
-            <p class="text-wrap"><?= htmlspecialchars($email) ?></p>
+            <p class="text-wrap"><?= htmlspecialchars($jabatan) ?></p>
         </div>
         <div class="d-flex flex-row">
-            <p>Facebook &ThickSpace;</p>
+            <p>NAMA LENGKAP &ThickSpace;</p>
             <p>: &ThickSpace;</p>
-            <p class="text-wrap"><?= htmlspecialchars($facebook) ?></p>
+            <p class="text-wrap"><?= htmlspecialchars($nama) ?></p>
         </div>
         <div class="d-flex flex-row">
-            <p>Instagram &ThickSpace;</p>
+            <p>NO TELP/HP &ThickSpace;</p>
             <p>: &ThickSpace;</p>
-            <p class="text-wrap"><?= htmlspecialchars($instagram) ?></p>
+            <p class="text-wrap"><?= htmlspecialchars($hp) ?></p>
         </div>
-    </div>
-    <div class="d-flex flex-row justify-content-end">
-        <a href="/dashboard.php?page=kontak_admin/crud_kontak_admin"
-            class="btn btn-primary me-2">Edit</a>
-        <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-            <input type="hidden" name="delete" value="<?= htmlspecialchars($id_kontak); ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
     </div>
 </div>
 

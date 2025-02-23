@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
 
     if ($stmt->execute()) {
         echo "<script>alert('Data berhasil dihapus.');</script>";
-        header("Location: /admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=karang_taruna");
+        header("Location: /dashboard.php?page=lembaga_desa/lembaga_desa&subpage=karang_taruna");
         exit();
     } else {
         echo "<script>alert('Gagal menghapus data.');</script>";
@@ -26,15 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
 $conn->close();
 ?>
 
-<div class="d-flex flex-column">
-    <div class="d-flex flex-column text-center">
+<div class="d-flex flex-column text-center">
         <h5>Karang Taruna Bumi Harjo</h5>
-        <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=karang_taruna/tambah_data_karang_taruna"
-                class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
-        </div>
-        <div class="pb-2 pe-2 ps-2 w-100 text-start mb-2">
-            <div class="d-flex flex-column justify-content-between align-content-center align-items-center">
+        <div class=" pe-2 ps-2 w-100 text-start">
+            <div class="d-flex flex-column justify-content-between align-content-center align-items-center my-4">
                 <?php if ($foto): ?>
                     <img src="<?= $foto ?>" class="img-fluid" alt="Foto Karang Taruna" loading="lazy">
                 <?php else: ?>
@@ -45,15 +40,7 @@ $conn->close();
                 <?= htmlspecialchars($keterangan); ?>
             </div>
         </div>
-    </div>
-    <div class="d-flex flex-row justify-content-end">
-        <a href="/admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=karang_taruna/edit_data_karang_taruna"
-            class="btn btn-primary me-2">Edit</a>
-        <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-            <input type="hidden" name="delete" value="<?= $id; ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
-    </div>
+    
 </div>
 
 <!-- AJAX and loading spinner -->
@@ -70,7 +57,7 @@ $conn->close();
         spinner.style.display = 'block';
 
         // Update the URL
-        window.history.pushState({}, '', 'admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=karang_taruna/tambah_data_karang_taruna');
+        window.history.pushState({}, '', 'dashboard.php?page=lembaga_desa/lembaga_desa&subpage=karang_taruna/tambah_data_karang_taruna');
 
         // Load tambah_data_karang_taruna.php content using AJAX
         const xhr = new XMLHttpRequest();

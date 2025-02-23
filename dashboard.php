@@ -1,10 +1,5 @@
 <?php
-include '../db_connect.php';
-session_start();
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: login.php");
-    exit();
-}
+include 'db_connect.php';
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard/dashboard';
 ?>
 
@@ -14,9 +9,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard/dashboard';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin</title>
+    <title>Desa Bumi Harjo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../assets/images/icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         .sidebar {
@@ -127,14 +122,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard/dashboard';
             <a href="dashboard.php?page=transparansi/transparansi" class="<?= $page == 'transparansi/transparansi' ? 'active' : '' ?>"><i class="bi bi-bar-chart"></i>Transparansi Desa</a>
             <a href="dashboard.php?page=kontak_admin/kontak_admin" class="<?= $page == 'kontak_admin/kontak_admin' ? 'active' : '' ?>"><i class="bi bi-telephone"></i>Kontak Admin</a>
         </div>
-        <a href="logout.php" class="btn btn-danger shadow-lg logout d-flex flex-row justify-content-center px-5 py-2 mx-auto end-0 start-0 mb-4"><i class="bi bi-box-arrow-right"></i>Logout</a>
     </div>
     <div class="navbar top-0" id="navbar">
         <span class="toggle-btn btn text-white border-1 border border-white" style="height: fit-content; width: fit-content; font-size: 20px;" onclick="toggleSidebar()"><i class="bi bi-list"></i></span>
         <span class="title">BMJ WEBSITE</span>
         <div class="admin-info">
             <i class="bi bi-person me-2" style="font-size: 30px;"></i>
-            <span>Admin</span>
+            <span>User</span>
         </div>
     </div>
     <div class="content" id="content">

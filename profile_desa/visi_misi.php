@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        header("Location: /admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi");
+        header("Location: /dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi");
         exit();
     } else {
         echo "<script>alert('Gagal menghapus data.');</script>";
@@ -29,7 +29,7 @@ $conn->close();
     <div class="d-flex flex-column text-center">
         <h3>Visi Misi Desa Bumi Harjo</h3>
         <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi/tambah_data_visi_misi"
+            <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi/tambah_data_visi_misi"
                 class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
         </div>
         <div class="d-flex flex-row justify-content-evenly mb-2">
@@ -53,7 +53,7 @@ $conn->close();
         </div>
     </div>
     <div class="d-flex flex-row justify-content-end">
-        <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi/edit_data_visi_misi"
+        <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi/edit_data_visi_misi"
             class="btn btn-primary me-2">Edit</a>
         <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
             <input type="hidden" name="delete" value="<?= $id; ?>">
@@ -76,7 +76,7 @@ $conn->close();
         spinner.style.display = 'block';
 
         // Update the URL
-        window.history.pushState({}, '', 'admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi/tambah_data_visi_misi');
+        window.history.pushState({}, '', 'dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi/tambah_data_visi_misi');
 
         // Load tambah_data_visi_misi.php content using AJAX
         const xhr = new XMLHttpRequest();

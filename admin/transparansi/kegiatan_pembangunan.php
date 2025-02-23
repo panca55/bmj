@@ -10,7 +10,7 @@ $result = $conn->query($sql);
 $kegiatan_array = [];
 while ($row = $result->fetch_assoc()) {
     $kegiatan_array[] = [
-        'id_kegiatan_pembangunan' => $row['id_kegiatan_pembangunan'],
+        'id_kegiatan_pembangunan' => $row['id_kegiatan_pembangunan'],   
         'keterangan' => $row['keterangan'] ?? 'Belum ada keterangan',
         'foto' => $row['foto'] ?? ''
     ];
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
 
     if ($stmt->execute()) {
         echo "<script>alert('Data berhasil dihapus.');</script>";
-        header("Location: /admin/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan");
+        header("Location: /admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan");
         exit();
     } else {
         echo "<script>alert('Gagal menghapus data.');</script>";
@@ -50,10 +50,10 @@ $conn->close();
         <h5>Kegiatan Pembangunan Desa Bumi Harjo Tahun <?= date('Y'); ?></h5>
         <div class="pb-2 pe-2 ps-2 w-100 text-start mb-2">
             <div class="d-flex flex-row justify-content-end my-2">
-                <a href="/admin/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan/tambah_data_kegiatan_pembangunan"
+                <a href="/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan/tambah_data_kegiatan_pembangunan"
                     class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
             </div>
-            <div class="d-flex flex-column justify-content-between align-content-center align-items-center">
+            <div class="d-flex flex-column justify-content-between align-conxtent-center align-items-center">
                 <?php if (!empty($kegiatan_array)): ?>
                     <div id="slideshow-container">
                         <?php foreach ($kegiatan_array as $index => $kegiatan): ?>
@@ -69,7 +69,7 @@ $conn->close();
                                     <p>Tidak ada foto untuk kegiatan ini</p>
                                 <?php endif; ?>
                                 <div class="d-flex flex-row justify-content-end mt-2">
-                                    <a href="/admin/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan/edit_data_kegiatan_pembangunan&id=<?= $kegiatan['id_kegiatan_pembangunan']; ?>"
+                                    <a href="/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan/edit_data_kegiatan_pembangunan&id=<?= $kegiatan['id_kegiatan_pembangunan']; ?>"
                                         class="btn btn-primary me-2">Edit</a>
                                     <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
                                         <input type="hidden" name="delete" value="<?= $kegiatan['id_kegiatan_pembangunan']; ?>">

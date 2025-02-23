@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# Redirect /admin ke /admin/admin_dashboard.php jika sudah login
+RewriteCond %{REQUEST_URI} ^/admin/?$ 
+RewriteCond %{HTTP_COOKIE} id_login
+RewriteRule ^ /admin/admin_dashboard.php [L,R=302]
+
+# Jika belum login, redirect ke login.php
+RewriteCond %{REQUEST_URI} ^/admin/?$ 
+RewriteCond %{HTTP_COOKIE} !id_login
+RewriteRule ^ /login.php [L,R=302]
+
+# Redirect / ke dashboard.php
+RewriteRule ^$ dashboard.php [L]
+
+# Redirect jika halaman tidak ditemukan ke 404.php
+ErrorDocument 404 /404.php

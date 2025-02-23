@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        header("Location: /admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=monografi_kependudukan");
+        header("Location: /dashboard.php?page=profile_desa/profil_desa&subpage=monografi_kependudukan");
         exit();
     } else {
         echo "<script>alert('Gagal menghapus data.');</script>";
@@ -29,7 +29,7 @@ $conn->close();
         <h5 class="fw-bold">MONOGRAFI KEPENDUDUKAN</h5>
         <h5>DESA BUMI HARJO</h5>
         <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=monografi_kependudukan/tambah_data_monografi_kependudukan"
+            <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=monografi_kependudukan/tambah_data_monografi_kependudukan"
                 class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
         </div>
         <div class="visi rounded-2 border-2 border-black border pb-2 pe-2 ps-2 w-100 text-start mb-2">
@@ -43,7 +43,7 @@ $conn->close();
         </div>
     </div>
     <div class="d-flex flex-row justify-content-end">
-        <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=monografi_kependudukan/edit_data_monografi_kependudukan"
+        <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=monografi_kependudukan/edit_data_monografi_kependudukan"
             class="btn btn-primary me-2">Edit</a>
         <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
             <input type="hidden" name="delete" value="<?= $id; ?>">
@@ -66,7 +66,7 @@ $conn->close();
         spinner.style.display = 'block';
 
         // Update the URL
-        window.history.pushState({}, '', 'admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=monografi_kependudukan/tambah_data_monografi_kependudukan');
+        window.history.pushState({}, '', 'dashboard.php?page=profile_desa/profil_desa&subpage=monografi_kependudukan/tambah_data_monografi_kependudukan');
 
         // Load tambah_data_monografi_kependudukan.php content using AJAX
         const xhr = new XMLHttpRequest();
