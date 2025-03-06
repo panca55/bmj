@@ -29,11 +29,7 @@ $conn->close();
         <h5>STRUKTUR ORGAMISASI PEMERINTAHAN</h5>
         <h5>DESA BUMI HARJO</h5>
         <h5>KECAMATAN PINANG RAYA KABUPATEN BENGKULU UTARA</h5>
-        <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=struktur_desa/tambah_data_struktur_desa"
-                class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
-        </div>
-        <div class="visi rounded-2 border-2 border-black border pb-2 pe-2 ps-2 w-100 text-start mb-2">
+        <div class="visi rounded-2 border-2 border-black border pb-2 pe-2 ps-2 w-100 text-start mt-4">
             <div class="d-flex flex-column justify-content-between align-content-center align-items-center">
                 <?php if ($struktur): ?>
                     <img src="<?= $struktur ?>" class="img-fluid" alt="Struktur Desa">
@@ -42,14 +38,6 @@ $conn->close();
                 <?php endif; ?>
             </div>
         </div>
-    </div>
-    <div class="d-flex flex-row justify-content-end">
-        <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=struktur_desa/edit_data_struktur_desa"
-            class="btn btn-primary me-2">Edit</a>
-        <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-            <input type="hidden" name="delete" value="<?= $id; ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
     </div>
 </div>
 

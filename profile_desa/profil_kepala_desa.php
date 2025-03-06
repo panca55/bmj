@@ -33,73 +33,60 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
 $conn->close();
 ?>
 
-<div class="d-flex flex-column">
-    <div class="d-flex flex-row justify-content-around my-2">
-        <div class="d-flex flex-column text-start">
-            <?php if ($foto): ?>
-                <img src="<?= $foto ?>" class="img-fluid w-50" alt="Foto Kepala Desa">
-            <?php else: ?>
-                <p>Belum ada gambar struktur desa.</p>
-            <?php endif; ?>
-            <img src="" alt="">
-            <div class="d-flex flex-row">
-                <p>jabatan &ThickSpace;</p>
-                <p>: &ThickSpace;</p>
-                <p class="text-wrap"><?= $keterangan_jabatan ?></p>
-            </div>
-            <div class="d-flex flex-row">
-                <p>Nomor SK &ThickSpace;</p>
-                <p>: &ThickSpace;</p>
-                <p class="text-wrap"><?= $no_sk ?></p>
-            </div>
+<div class="d-flex flex-row justify-content-start my-2">
+    <div class="d-flex flex-column text-start w-50">
+        <?php if ($foto): ?>
+            <img src="<?= $foto ?>" class="mb-3 img-fluid w-75" alt="Foto Kepala Desa">
+        <?php else: ?>
+            <p>Belum ada gambar struktur desa.</p>
+        <?php endif; ?>
+        <div class="d-flex flex-row mb-2" style="width: fit-content;">
+            <p class="fw-bold">Jabatan &ThickSpace;</p>
+            <p>: &ThickSpace;</p>
+            <p class="text-wrap"><?= $keterangan_jabatan ?></p>
         </div>
-        <div class="d-flex flex-column">
-            <div class="d-flex flex-row">
-                <p>nama &ThickSpace;</p>
-                <p>: &ThickSpace;</p>
-                <p class="text-wrap"><?= $nama ?></p>
-            </div>
-            <div class="d-flex flex-row">
-                <p>Tempat Tanggal Lahir &ThickSpace;</p>
-                <p>: &ThickSpace;</p>
-                <p class="text-wrap"><?= $tempat_tanggal_lahir ?></p>
-            </div>
-            <div class="d-flex flex-row">
-                <p>Jenis Kelamin &ThickSpace;</p>
-                <p>: &ThickSpace;</p>
-                <p class="text-wrap"><?= $jenis_kelamin ?></p>
-            </div>
-            <div class="d-flex flex-row">
-                <p>Status &ThickSpace;</p>
-                <p>: &ThickSpace;</p>
-                <p class="text-wrap"><?= $status ?></p>
-            </div>
-            <div class="d-flex flex-row">
-                <p>ALamat &ThickSpace;</p>
-                <p>: &ThickSpace;</p>
-                <p class="text-wrap"><?= $alamat ?></p>
-            </div>
-            <div class="d-flex flex-row">
-                <p>Telp/Hp &ThickSpace;</p>
-                <p>: &ThickSpace;</p>
-                <p class="text-wrap"><?= $hp ?></p>
-            </div>
-            <div class="d-flex flex-row">
-                <p>Nama Suami/Istri &ThickSpace;</p>
-                <p>: &ThickSpace;</p>
-                <p class="text-wrap"><?= $nama_pasangan ?></p>
-            </div>
+        <div class="d-flex flex-row mb-2" style="width: fit-content;">
+            <p class="fw-bold">Nomor SK &ThickSpace;</p>
+            <p>: &ThickSpace;</p>
+            <p class="text-wrap"><?= $no_sk ?></p>
         </div>
-        <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa/tambah_data_profil_kepala_desa"
-            class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
     </div>
-    <div class="d-flex flex-row justify-content-end">
-        <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=profil_kepala_desa/edit_data_profil_kepala_desa"
-            class="btn btn-primary me-2">Edit</a>
-        <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-            <input type="hidden" name="delete" value="<?= $id; ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
+    <div class="d-flex flex-column ms-2">
+        <div class="d-flex flex-row mb-2">
+            <p class="fw-bold">Nama &ThickSpace;</p>
+            <p>: &ThickSpace;</p>
+            <p class="text-wrap"><?= $nama ?></p>
+        </div>
+        <div class="d-flex flex-row mb-2">
+            <p class="fw-bold">Tempat Tanggal Lahir &ThickSpace;</p>
+            <p>: &ThickSpace;</p>
+            <p class="text-wrap"><?= $tempat_tanggal_lahir ?></p>
+        </div>
+        <div class="d-flex flex-row mb-2">
+            <p class="fw-bold">Jenis Kelamin &ThickSpace;</p>
+            <p>: &ThickSpace;</p>
+            <p class="text-wrap"><?= $jenis_kelamin ?></p>
+        </div>
+        <div class="d-flex flex-row mb-2">
+            <p class="fw-bold">Status &ThickSpace;</p>
+            <p>: &ThickSpace;</p>
+            <p class="text-wrap"><?= $status ?></p>
+        </div>
+        <div class="d-flex flex-row mb-2">
+            <p class="fw-bold">Alamat &ThickSpace;</p>
+            <p>: &ThickSpace;</p>
+            <p class="text-wrap"><?= $alamat ?></p>
+        </div>
+        <div class="d-flex flex-row mb-2">
+            <p class="fw-bold">Telp/Hp &ThickSpace;</p>
+            <p>: &ThickSpace;</p>
+            <p class="text-wrap"><?= $hp ?></p>
+        </div>
+        <div class="d-flex flex-row mb-2">
+            <p class="fw-bold">Nama Suami/Istri &ThickSpace;</p>
+            <p>: &ThickSpace;</p>
+            <p class="text-wrap"><?= $nama_pasangan ?></p>
+        </div>
     </div>
 </div>
 

@@ -6,6 +6,7 @@ if (!isset($_SESSION['id_login'])) {
     exit();
 }
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard/dashboard';
+ob_start();
 ?>
 
 <!DOCTYPE html>
@@ -155,3 +156,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard/dashboard';
 </body>
 
 </html>
+
+<?php
+ob_end_flush();
+?>

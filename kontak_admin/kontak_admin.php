@@ -9,23 +9,6 @@ $email = $row['email'] ?? 'Data belum ada.';
 $facebook = $row['facebook'] ?? 'Data belum ada.';
 $instagram = $row['instagram'] ?? 'Data belum ada.';
 $id_kontak = $row['id_kontak'] ?? 0;
-
-// Hapus data jika ada request POST 'delete'
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    $idDelete = intval($_POST['delete']);
-    $stmt = $conn->prepare("UPDATE tb_kontak SET email = NULL, facebook = NULL, instagram = NULL WHERE id_kontak = ? LIMIT 1");
-    $stmt->bind_param("i", $idDelete);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Data berhasil dihapus.');</script>";
-        header("Location: /dashboard.php?page=kontak_admin/kontak_admin");
-        exit();
-    } else {
-        echo "<script>alert('Gagal menghapus data.');</script>";
-    }
-    $stmt->close();
-}
-
 $conn->close();
 ?>
 
@@ -53,14 +36,6 @@ $conn->close();
             <p>: &ThickSpace;</p>
             <p class="text-wrap"><?= htmlspecialchars($instagram) ?></p>
         </div>
-    </div>
-    <div class="d-flex flex-row justify-content-end">
-        <a href="/dashboard.php?page=kontak_admin/crud_kontak_admin"
-            class="btn btn-primary me-2">Edit</a>
-        <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-            <input type="hidden" name="delete" value="<?= htmlspecialchars($id_kontak); ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
     </div>
 </div>
 

@@ -28,19 +28,9 @@ $conn->close();
 <div class="d-flex flex-column">
     <div class="d-flex flex-column text-center">
         <h3>Sejarah Desa Bumi Harjo</h3>
-        <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=sejarah/tambah_data_sejarah" class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
-        </div>
-        <div class="sejarah rounded-2 border-2 border-black border p-2 mb-2 text-start">
+        <div class="sejarah rounded-2 border-2 border-black border p-2 mt-2 text-start">
             <?= htmlspecialchars($sejarah); ?>
         </div>
-    </div>
-    <div class="d-flex flex-row justify-content-end">
-        <a href="/dashboard.php?page=profile_desa/profil_desa&subpage=sejarah/edit_data_sejarah" class="btn btn-primary me-2">Edit</a>
-        <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-            <input type="hidden" name="delete" value="<?= $id; ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
     </div>
 </div>
 

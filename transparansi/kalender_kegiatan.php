@@ -8,22 +8,6 @@ $kalenderKegiatan = [];
 while ($row = $result->fetch_assoc()) {
     $kalenderKegiatan[] = $row;
 }
-
-// Hapus data jika ada request POST 'delete'
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    $id = intval($_POST['delete']);
-    $stmt = $conn->prepare("DELETE FROM tb_kalender_kegiatan WHERE id_kegiatan = ? LIMIT 1");
-    $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        header("Location: /dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan");
-        exit();
-    } else {
-        echo "<script>alert('Gagal menghapus data.');</script>";
-    }
-    $stmt->close();
-}
-
 $conn->close();
 ?>
 
@@ -31,9 +15,6 @@ $conn->close();
     <div class="d-flex flex-column text-center">
         <h3 class="fw-bold">Kalender Kegiatan</h3>
         <h3>Desa Bumi Harjo</h3>
-        <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan/tambah_data_kalender_kegiatan" class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
-        </div>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -41,7 +22,6 @@ $conn->close();
                     <th>Bulan</th>
                     <th>Tanggal</th>
                     <th>Kegiatan</th>
-                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,13 +31,6 @@ $conn->close();
                         <td><?= htmlspecialchars($kegiatan['bulan']); ?></td>
                         <td><?= htmlspecialchars($kegiatan['tanggal']); ?></td>
                         <td><?= htmlspecialchars($kegiatan['kegiatan']); ?></td>
-                        <td>
-                            <a href="/dashboard.php?page=transparansi/transparansi&subpage=kalender_kegiatan/edit_data_kalender_kegiatan&id=<?= $kegiatan['id_kegiatan']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                            <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-                                <input type="hidden" name="delete" value="<?= $kegiatan['id_kegiatan']; ?>">
-                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                            </form>
-                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

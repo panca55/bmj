@@ -9,21 +9,6 @@ while ($row = $result->fetch_assoc()) {
     $rt[] = $row;
 }
 
-// Hapus data jika ada request POST 'delete'
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    $id = intval($_POST['delete']);
-    $stmt = $conn->prepare("DELETE FROM tb_rt WHERE id_rt = ? LIMIT 1");
-    $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        header("Location: /dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt");
-        exit();
-    } else {
-        echo "<script>alert('Gagal menghapus data.');</script>";
-    }
-    $stmt->close();
-}
-
 $conn->close();
 ?>
 

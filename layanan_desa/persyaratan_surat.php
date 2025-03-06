@@ -15,12 +15,11 @@ $conn->close();
     <div class="d-flex flex-column text-center">
         <h3 class="fw-bold">PROFIL</h3>
         <h3>PERSYARATAN SURAT DESA BUMI HARJO</h3>
-        <div class="d-flex flex-row justify-content-end my-2">
-            <a href="/dashboard.php?page=layanan_desa/layanan_desa&subpage=persyaratan_surat/tambah_data_persyaratan_surat" class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
+        <div class="mt-2">
+            <?php foreach ($persyaratan_surat as $index => $persyaratan): ?>
+                <a href="/dashboard.php?page=layanan_desa/layanan_desa&subpage=persyaratan_surat_detail&id=<?= $persyaratan['id_persyaratan_surat'] ?>" class="w-100 border border-2 border-black text-decoration-none text-black fw-bold py-2 my-2"> <?= htmlspecialchars($persyaratan['keterangan']); ?></a>
+            <?php endforeach; ?>
         </div>
-        <?php foreach ($persyaratan_surat as $index => $persyaratan): ?>
-            <a href="/dashboard.php?page=layanan_desa/layanan_desa&subpage=persyaratan_surat_detail&id=<?= $persyaratan['id_persyaratan_surat'] ?>" class="w-100 border border-2 border-black text-decoration-none text-black fw-bold py-2 my-2"> <?= htmlspecialchars($persyaratan['keterangan']); ?></a>
-        <?php endforeach; ?>
     </div>
 </div>
 

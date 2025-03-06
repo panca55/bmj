@@ -8,21 +8,6 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $keterangan = $row['keterangan'] ?? 'Belum ada keterangan';
 $foto = $row['foto'] ?? '';
-// Hapus data jika ada request POST 'delete'
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    $stmt = $conn->prepare("UPDATE tb_bumdes SET keterangan = NULL, foto = NULL WHERE id_bumdes = ? LIMIT 1");
-    $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Data berhasil dihapus.');</script>";
-        header("Location: /dashboard.php?page=lembaga_desa/lembaga_desa&subpage=bumdes");
-        exit();
-    } else {
-        echo "<script>alert('Gagal menghapus data.');</script>";
-    }
-    $stmt->close();
-}
-
 $conn->close();
 ?>
 
@@ -30,10 +15,6 @@ $conn->close();
     <div class="d-flex flex-column text-center">
         <h5>Badan Permusyawaratan Desa Bumi Harjo</h5>
         <div class="pb-2 pe-2 ps-2 w-100 text-start mb-2">
-            <div class="d-flex flex-row justify-content-end my-2">
-                <a href="/dashboard.php?page=lembaga_desa/lembaga_desa&subpage=bumdes/tambah_data_bumdes"
-                    class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
-            </div>
             <div class="keterangan rounded-2 border-2 border-black border p-2 mb-2 text-start">
                 <?= htmlspecialchars($keterangan); ?>
             </div>
@@ -49,14 +30,6 @@ $conn->close();
                 <?php endif; ?>
             </div>
         </div>
-    </div>
-    <div class="d-flex flex-row justify-content-end">
-        <a href="/dashboard.php?page=lembaga_desa/lembaga_desa&subpage=bumdes/edit_data_bumdes"
-            class="btn btn-primary me-2">Edit</a>
-        <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-            <input type="hidden" name="delete" value="<?= $id; ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
     </div>
 </div>
 

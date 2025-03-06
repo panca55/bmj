@@ -15,21 +15,6 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $keterangan = $row['keterangan'] ?? 'Belum ada keterangan';
 $id = $row['id_transparansi_anggaran'];
-// Hapus data jika ada request POST 'delete'
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    // $id = intval($_POST['delete']);
-    $stmt = $conn->prepare("UPDATE tb_transparansi_anggaran SET keterangan = NULL, apbd_desa = NULL, dana_desa = NULL, pendapatan_asli_desa = NULL WHERE id_transparansi_anggaran = ? LIMIT 1");
-    $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        header("Location: /dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran");
-        exit();
-    } else {
-        echo "<script>alert('Gagal menghapus data.');</script>";
-    }
-    $stmt->close();
-}
-
 $conn->close();
 ?>
 
@@ -37,10 +22,6 @@ $conn->close();
     <div class="d-flex flex-column text-center">
         <h5>Transparansi Anggaran Desa Bumi Harjo</h5>
         <div class="pb-2 pe-2 ps-2 w-100 text-start mb-2">
-            <div class="d-flex flex-row justify-content-end my-2">
-                <a href="/dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran/tambah_data_transparansi_anggaran"
-                    class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
-            </div>
             <div class="keterangan rounded-2 border-2 border-black border p-2 mb-2 text-start">
                 <?= htmlspecialchars($keterangan); ?>
             </div>
@@ -84,14 +65,6 @@ $conn->close();
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="d-flex flex-row justify-content-end">
-        <a href="/dashboard.php?page=transparansi/transparansi&subpage=transparansi_anggaran/edit_data_transparansi_anggaran"
-            class="btn btn-primary me-2">Edit</a>
-        <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
-            <input type="hidden" name="delete" value="<?= $id; ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
     </div>
 </div>
 

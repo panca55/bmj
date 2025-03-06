@@ -98,11 +98,6 @@ $conn->close();
         <h5>Kegiatan Pembangunan Desa Bumi Harjo Tahun <?= date('Y'); ?></h5>
 
         <div class="pb-2 pe-2 ps-2 w-100 text-start mb-2">
-            <div class="d-flex flex-row justify-content-end my-2">
-                <a href="/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan/tambah_data_kegiatan_pembangunan"
-                    class="fw-bold text-decoration-none text-success">Tambah Data</a>
-            </div>
-
             <div class="d-flex flex-column justify-content-between align-content-center align-items-center">
                 <?php if (!empty($kegiatanPembangunan)): ?>
                     <div id="slideshow-container" class="position-relative">
@@ -118,14 +113,6 @@ $conn->close();
                                         <?php else: ?>
                                             <p class="text-muted">Tidak ada foto untuk kegiatan ini</p>
                                         <?php endif; ?>
-                                        <div class="d-flex flex-row justify-content-center mt-2">
-                                            <a href="/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan/edit_data_kegiatan_pembangunan&id=<?= $kegiatan['id_kegiatan_pembangunan']; ?>"
-                                                class="btn btn-primary me-2">Edit</a>
-                                            <form method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
-                                                <input type="hidden" name="delete" value="<?= $kegiatan['id_kegiatan_pembangunan']; ?>">
-                                                <button type="submit" class="btn btn-danger">Hapus</button>
-                                            </form>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

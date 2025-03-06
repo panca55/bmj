@@ -8,21 +8,6 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $keterangan = $row['keterangan'] ?? 'Belum ada keterangan';
 $foto = $row['foto'] ?? '';
-// Hapus data jika ada request POST 'delete'
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    $stmt = $conn->prepare("UPDATE tb_karang_taruna SET keterangan = NULL, foto = NULL WHERE id_karang_taruna = ? LIMIT 1");
-    $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Data berhasil dihapus.');</script>";
-        header("Location: /dashboard.php?page=lembaga_desa/lembaga_desa&subpage=karang_taruna");
-        exit();
-    } else {
-        echo "<script>alert('Gagal menghapus data.');</script>";
-    }
-    $stmt->close();
-}
-
 $conn->close();
 ?>
 

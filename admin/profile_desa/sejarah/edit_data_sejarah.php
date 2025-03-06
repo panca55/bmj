@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
 
 $message = ""; // Variabel untuk pesan sukses atau error
 
