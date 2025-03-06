@@ -14,7 +14,7 @@ $conn->close();
 
 <div class="d-flex flex-column">
     <div class="d-flex flex-column justify-content-center text-center align-items-center mb-2">
-        <div class="border border-1 border-black py-2 w-100">
+        <div class="border border-1 border-black py-2 px-2 w-100">
             <h3>
                 <?= htmlspecialchars($keterangan) ?>
             </h3>

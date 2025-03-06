@@ -31,32 +31,9 @@ $conn->close();
     <div class="d-flex flex-column text-center">
         <h3 class="fw-bold">PROFIL</h3>
         <h3>PERANGKAT DESA BUMI HARJO</h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Tempat, Tanggal Lahir</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Jabatan</th>
-                    <th>Alamat</th>
-                    <th>Gambar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($perangkat_desa as $index => $perangkat): ?>
-                    <tr>
-                        <td><?= $index + 1; ?></td>
-                        <td><?= htmlspecialchars($perangkat['nama']); ?></td>
-                        <td><?= htmlspecialchars($perangkat['tempat_tanggal_lahir']); ?></td>
-                        <td><?= htmlspecialchars($perangkat['jenis_kelamin']); ?></td>
-                        <td><?= htmlspecialchars($perangkat['jabatan']); ?></td>
-                        <td><?= htmlspecialchars($perangkat['alamat']); ?></td>
-                        <td><img src="<?= htmlspecialchars($perangkat['foto']); ?>" alt="Foto Perangkat Desa" width="100"></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+        <?php foreach ($perangkat_desa as $index => $perangkat): ?>
+            <a href="/dashboard.php?page=profile_desa/profil_perangkat_desa_detail&id=<?= $perangkat['id_perangkat_desa'] ?>" class="w-100 border border-2 border-black text-decoration-none text-black fw-bold py-2 px-2 my-2"> <?= htmlspecialchars($perangkat['jabatan']); ?></a>
+        <?php endforeach; ?>
     </div>
 </div>
 

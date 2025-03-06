@@ -17,7 +17,7 @@ $conn->close();
         <h3>PERSYARATAN SURAT DESA BUMI HARJO</h3>
         <div class="mt-2">
             <?php foreach ($persyaratan_surat as $index => $persyaratan): ?>
-                <a href="/dashboard.php?page=layanan_desa/layanan_desa&subpage=persyaratan_surat_detail&id=<?= $persyaratan['id_persyaratan_surat'] ?>" class="w-100 border border-2 border-black text-decoration-none text-black fw-bold py-2 my-2"> <?= htmlspecialchars($persyaratan['keterangan']); ?></a>
+                <a href="/dashboard.php?page=layanan_desa/layanan_desa&subpage=persyaratan_surat_detail&id=<?= $persyaratan['id_persyaratan_surat'] ?>" class="w-100 border border-2 border-black text-decoration-none text-black fw-bold py-2 px-2 my-2"> <?= htmlspecialchars($persyaratan['keterangan']); ?></a>
             <?php endforeach; ?>
         </div>
     </div>

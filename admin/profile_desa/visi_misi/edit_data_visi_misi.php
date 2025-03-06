@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = isset($_POST['id_profil_desa']) ? intval($_POST['id_profil_desa']) : 0;

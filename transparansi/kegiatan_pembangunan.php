@@ -21,12 +21,7 @@ $conn->close();
 
     .mySlides {
         display: none;
-        animation: fadeEffect 0.5s;
-    }
-
-    @keyframes fadeEffect {
-        from {opacity: 0.4}
-        to {opacity: 1}
+        /* Semua slide disembunyikan secara default */
     }
 
     .prev,
@@ -102,7 +97,7 @@ $conn->close();
                 <?php if (!empty($kegiatanPembangunan)): ?>
                     <div id="slideshow-container" class="position-relative">
                         <?php foreach ($kegiatanPembangunan as $index => $kegiatan): ?>
-                            <div class="mySlides">
+                            <div class="mySlides" <?= $index === 0 ? 'style="display: block;"' : '' ?>>
                                 <div class="slide-content">
                                     <div class="d-flex flex-column justify-content-center text-center">
                                         <div class="border border-1 border-black py-2 fw-bold mb-3">
@@ -122,7 +117,7 @@ $conn->close();
                     </div>
                     <div class="dots-container">
                         <?php for ($i = 0; $i < count($kegiatanPembangunan); $i++): ?>
-                            <span class="dot" onclick="currentSlide(<?= $i + 1 ?>)"></span>
+                            <span class="dot <?= $i === 0 ? 'active-dot' : '' ?>" onclick="currentSlide(<?= $i + 1 ?>)"></span>
                         <?php endfor; ?>
                     </div>
                 <?php else: ?>
@@ -135,39 +130,24 @@ $conn->close();
 
 <script>
     let slideIndex = 1;
-    let slideInterval;
 
     // Initialize the slideshow
     document.addEventListener('DOMContentLoaded', function() {
         showSlides(slideIndex);
-        startAutoSlide();
     });
-
-    function startAutoSlide() {
-        // Clear any existing interval
-        if (slideInterval) {
-            clearInterval(slideInterval);
-        }
-        // Start automatic slideshow
-        slideInterval = setInterval(function() {
-            plusSlides(1);
-        }, 5000); // Change slide every 5 seconds
-    }
 
     function plusSlides(n) {
         showSlides(slideIndex += n);
-        startAutoSlide(); // Reset the timer when manually changing slides
     }
 
     function currentSlide(n) {
         showSlides(slideIndex = n);
-        startAutoSlide(); // Reset the timer when manually changing slides
     }
 
     function showSlides(n) {
         let slides = document.getElementsByClassName("mySlides");
         let dots = document.getElementsByClassName("dot");
-        
+
         if (!slides.length) return; // Guard clause if no slides exist
 
         // Handle circular navigation
@@ -201,16 +181,4 @@ $conn->close();
             plusSlides(1);
         }
     });
-
-    // Pause autoplay on hover
-    const slideshowContainer = document.getElementById('slideshow-container');
-    if (slideshowContainer) {
-        slideshowContainer.addEventListener('mouseenter', function() {
-            clearInterval(slideInterval);
-        });
-
-        slideshowContainer.addEventListener('mouseleave', function() {
-            startAutoSlide();
-        });
-    }
 </script>
