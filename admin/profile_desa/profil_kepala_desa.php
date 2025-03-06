@@ -37,11 +37,10 @@ $conn->close();
     <div class="d-flex flex-row justify-content-around my-2">
         <div class="d-flex flex-column text-start">
             <?php if ($foto): ?>
-                <img src="<?= $foto ?>" class="img-fluid w-50" alt="Foto Kepala Desa">
+                <img src="<?= htmlspecialchars($foto, ENT_QUOTES, 'UTF-8') ?>" class="img-fluid w-50" alt="Foto Kepala Desa">
             <?php else: ?>
-                <p>Belum ada gambar struktur desa.</p>
+                <p>Belum ada gambar kepala desa.</p>
             <?php endif; ?>
-            <img src="" alt="">
             <div class="d-flex flex-row">
                 <p>jabatan &ThickSpace;</p>
                 <p>: &ThickSpace;</p>
