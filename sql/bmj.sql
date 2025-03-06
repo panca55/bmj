@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 27 Feb 2025 pada 12.03
+-- Waktu pembuatan: 06 Mar 2025 pada 19.50
 -- Versi server: 8.0.30
 -- Versi PHP: 8.1.10
 
@@ -33,13 +33,6 @@ CREATE TABLE `tb_admin` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_admin`
---
-
-INSERT INTO `tb_admin` (`id_login`, `username`, `password`) VALUES
-(1, 'admin', '$2y$10$pKzmroBp8Q8O9E1o4JEuT.A.xTw7XYrb970y9IotP7awGJ35qiZxm');
-
 -- --------------------------------------------------------
 
 --
@@ -51,13 +44,6 @@ CREATE TABLE `tb_apbd_desa` (
   `keterangan` varchar(255) DEFAULT NULL,
   `foto` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `tb_apbd_desa`
---
-
-INSERT INTO `tb_apbd_desa` (`id_apbd_desa`, `keterangan`, `foto`) VALUES
-(1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -71,13 +57,6 @@ CREATE TABLE `tb_bpd` (
   `foto` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_bpd`
---
-
-INSERT INTO `tb_bpd` (`id_bpd`, `keterangan`, `foto`) VALUES
-(1, 'asfkhfsakj', 0x2f75706c6f6164732f6270642f656c64612e64726177696f2e706e67);
-
 -- --------------------------------------------------------
 
 --
@@ -90,13 +69,6 @@ CREATE TABLE `tb_bumdes` (
   `foto` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_bumdes`
---
-
-INSERT INTO `tb_bumdes` (`id_bpd`, `keterangan`, `foto`) VALUES
-(1, 'asfkjasflj21083', 0x2f75706c6f6164732f62756d6465732f656c64612e64726177696f2e706e67);
-
 -- --------------------------------------------------------
 
 --
@@ -108,13 +80,6 @@ CREATE TABLE `tb_data_laporan` (
   `keterangan` varchar(255) DEFAULT NULL,
   `file` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `tb_data_laporan`
---
-
-INSERT INTO `tb_data_laporan` (`id_data_laporan`, `keterangan`, `file`) VALUES
-(1, '189274912847mmmmmmmmmm', 0x2f75706c6f6164732f646174615f6c61706f72616e2f312e706466);
 
 -- --------------------------------------------------------
 
@@ -129,13 +94,6 @@ CREATE TABLE `tb_kalender_kegiatan` (
   `kegiatan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_kalender_kegiatan`
---
-
-INSERT INTO `tb_kalender_kegiatan` (`id_kegiatan`, `bulan`, `tanggal`, `kegiatan`) VALUES
-(1, 'Maret', '5', 'hjkhkj');
-
 -- --------------------------------------------------------
 
 --
@@ -148,13 +106,6 @@ CREATE TABLE `tb_karang_taruna` (
   `foto` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_karang_taruna`
---
-
-INSERT INTO `tb_karang_taruna` (`id_karang_taruna`, `keterangan`, `foto`) VALUES
-(1, 'asqweq112', 0x2f75706c6f6164732f6b6172616e675f746172756e612f47616d62617220576861747341707020323032352d30322d31302070756b756c2032302e30342e30365f62326636356564302e6a7067);
-
 -- --------------------------------------------------------
 
 --
@@ -166,15 +117,6 @@ CREATE TABLE `tb_kegiatan_pembangunan` (
   `keterangan` varchar(255) DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `tb_kegiatan_pembangunan`
---
-
-INSERT INTO `tb_kegiatan_pembangunan` (`id_kegiatan_pembangunan`, `keterangan`, `foto`) VALUES
-(1, 'afsfas', '/uploads/kegiatan_pembangunan/download.jpeg'),
-(2, '123021a0sf', '/uploads/kegiatan_pembangunan/Picture2.jpg'),
-(3, 'panca 20202', '/uploads/kegiatan_pembangunan/download.jpeg');
 
 -- --------------------------------------------------------
 
@@ -196,13 +138,6 @@ CREATE TABLE `tb_kepala_desa` (
   `no_sk` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_kepala_desa`
---
-
-INSERT INTO `tb_kepala_desa` (`id_kades`, `nama`, `tempat_tanggal_lahir`, `jenis_kelamin`, `status`, `alamat`, `hp`, `nama_pasangan`, `foto`, `keterangan_jabatan`, `no_sk`) VALUES
-(1, 'aslkfjla', 'klasjflk', 'aslkfjlas', 'alkfsjlsak', 'klsajflkfj', 'klasfjl', 'aslkfjl', '/uploads/kepala_desa/panca.jpg', 'saflkfjasl', '219408');
-
 -- --------------------------------------------------------
 
 --
@@ -216,13 +151,6 @@ CREATE TABLE `tb_kontak` (
   `instagram` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_kontak`
---
-
-INSERT INTO `tb_kontak` (`id_kontak`, `email`, `facebook`, `instagram`) VALUES
-(1, NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -233,13 +161,6 @@ CREATE TABLE `tb_layanan` (
   `id_layanan` int NOT NULL,
   `layanan_desa` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `tb_layanan`
---
-
-INSERT INTO `tb_layanan` (`id_layanan`, `layanan_desa`) VALUES
-(1, NULL);
 
 -- --------------------------------------------------------
 
@@ -271,14 +192,6 @@ CREATE TABLE `tb_perangkat_desa` (
   `jabatan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_perangkat_desa`
---
-
-INSERT INTO `tb_perangkat_desa` (`id_perangkat_desa`, `nama`, `tempat_tanggal_lahir`, `jenis_kelamin`, `alamat`, `foto`, `jabatan`) VALUES
-(4, 'pancawqwa', 'lkasj', 'aslkfj', 'lkasfj', '/uploads/perangkat_desa/nextjs.png', 'laskfj'),
-(5, 'broku', 'kfjasal', 'lkajsl', 'lkjfslaj', '/uploads/perangkat_desa/laravel.png', 'kljsaflkj');
-
 -- --------------------------------------------------------
 
 --
@@ -290,13 +203,6 @@ CREATE TABLE `tb_persyaratan_surat` (
   `keterangan` varchar(255) DEFAULT NULL,
   `file` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `tb_persyaratan_surat`
---
-
-INSERT INTO `tb_persyaratan_surat` (`id_persyaratan_surat`, `keterangan`, `file`) VALUES
-(1, 'kljlakfsj', 0x2f75706c6f6164732f706572737961726174616e5f73757261742f312e706466);
 
 -- --------------------------------------------------------
 
@@ -313,14 +219,6 @@ CREATE TABLE `tb_profil_desa` (
   `monografi_kependudukan` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_profil_desa`
---
-
-INSERT INTO `tb_profil_desa` (`id_profil_desa`, `sejarah_desa`, `visi_desa`, `misi_desa`, `struktur_desa`, `monografi_kependudukan`) VALUES
-(3, 'asfasfasf', 'kljkjlkj', 'opipoipiou', 0x2f75706c6f6164732f737472756b7475725f646573612f616e64726f69642e706e67, '/uploads/monografi_kependudukan/flutter.png'),
-(4, NULL, NULL, NULL, NULL, '/uploads/monografi_kependudukan/flutter.png');
-
 -- --------------------------------------------------------
 
 --
@@ -336,14 +234,6 @@ CREATE TABLE `tb_rt` (
   `hp` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `tb_rt`
---
-
-INSERT INTO `tb_rt` (`id_rt`, `keterangan`, `jabatan`, `nama`, `foto`, `hp`) VALUES
-(1, 'aflkjal', 'lkjafslkj', 'alkfj', '/uploads/rt/elda.drawio.png', '098098'),
-(2, 'aflkjalk', 'lkjsa', 'lkjasfa', '/uploads/rt/home page.png', '0129834');
-
 -- --------------------------------------------------------
 
 --
@@ -357,13 +247,6 @@ CREATE TABLE `tb_transparansi_anggaran` (
   `dana_desa` blob,
   `pendapatan_asli_desa` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `tb_transparansi_anggaran`
---
-
-INSERT INTO `tb_transparansi_anggaran` (`id_transparansi_anggaran`, `keterangan`, `apbd_desa`, `dana_desa`, `pendapatan_asli_desa`) VALUES
-(1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -500,67 +383,67 @@ ALTER TABLE `tb_transparasi`
 -- AUTO_INCREMENT untuk tabel `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `id_login` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_login` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_apbd_desa`
 --
 ALTER TABLE `tb_apbd_desa`
-  MODIFY `id_apbd_desa` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=2;
+  MODIFY `id_apbd_desa` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bpd`
 --
 ALTER TABLE `tb_bpd`
-  MODIFY `id_bpd` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=2;
+  MODIFY `id_bpd` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bumdes`
 --
 ALTER TABLE `tb_bumdes`
-  MODIFY `id_bpd` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=2;
+  MODIFY `id_bpd` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_data_laporan`
 --
 ALTER TABLE `tb_data_laporan`
-  MODIFY `id_data_laporan` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=3;
+  MODIFY `id_data_laporan` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kalender_kegiatan`
 --
 ALTER TABLE `tb_kalender_kegiatan`
-  MODIFY `id_kegiatan` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=2;
+  MODIFY `id_kegiatan` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_karang_taruna`
 --
 ALTER TABLE `tb_karang_taruna`
-  MODIFY `id_karang_taruna` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=2;
+  MODIFY `id_karang_taruna` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kegiatan_pembangunan`
 --
 ALTER TABLE `tb_kegiatan_pembangunan`
-  MODIFY `id_kegiatan_pembangunan` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=4;
+  MODIFY `id_kegiatan_pembangunan` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kepala_desa`
 --
 ALTER TABLE `tb_kepala_desa`
-  MODIFY `id_kades` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=2;
+  MODIFY `id_kades` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kontak`
 --
 ALTER TABLE `tb_kontak`
-  MODIFY `id_kontak` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kontak` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_layanan`
 --
 ALTER TABLE `tb_layanan`
-  MODIFY `id_layanan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_layanan` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_lembaga`
@@ -572,31 +455,31 @@ ALTER TABLE `tb_lembaga`
 -- AUTO_INCREMENT untuk tabel `tb_perangkat_desa`
 --
 ALTER TABLE `tb_perangkat_desa`
-  MODIFY `id_perangkat_desa` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=6;
+  MODIFY `id_perangkat_desa` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_persyaratan_surat`
 --
 ALTER TABLE `tb_persyaratan_surat`
-  MODIFY `id_persyaratan_surat` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=3;
+  MODIFY `id_persyaratan_surat` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_profil_desa`
 --
 ALTER TABLE `tb_profil_desa`
-  MODIFY `id_profil_desa` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_profil_desa` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_rt`
 --
 ALTER TABLE `tb_rt`
-  MODIFY `id_rt` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=3;
+  MODIFY `id_rt` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transparansi_anggaran`
 --
 ALTER TABLE `tb_transparansi_anggaran`
-  MODIFY `id_transparansi_anggaran` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=2;
+  MODIFY `id_transparansi_anggaran` int NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transparasi`
