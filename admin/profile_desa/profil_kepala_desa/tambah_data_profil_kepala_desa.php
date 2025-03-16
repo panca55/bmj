@@ -84,45 +84,45 @@ $conn->close();
             <div class="d-flex flex-column container">
                 <div class="mb-3">
                     <label class="form-label">Nama</label>
-                    <input type="text" name="nama" class="form-control" value="<?= htmlspecialchars($profil['nama'] ?? '') ?>" required>
+                    <input type="text" name="nama" class="form-control" value="<?= htmlspecialchars($profil['nama'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tempat Tanggal Lahir</label>
-                    <input type="text" name="tempat_tanggal_lahir" class="form-control" value="<?= htmlspecialchars($profil['tempat_tanggal_lahir'] ?? '') ?>" required>
+                    <input type="text" name="tempat_tanggal_lahir" class="form-control" value="<?= htmlspecialchars($profil['tempat_tanggal_lahir'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Jenis Kelamin</label>
-                    <input type="text" name="jenis_kelamin" class="form-control" value="<?= htmlspecialchars($profil['jenis_kelamin'] ?? '') ?>" required>
+                    <input type="text" name="jenis_kelamin" class="form-control" value="<?= htmlspecialchars($profil['jenis_kelamin'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Status</label>
-                    <input type="text" name="status" class="form-control" value="<?= htmlspecialchars($profil['status'] ?? '') ?>" required>
+                    <input type="text" name="status" class="form-control" value="<?= htmlspecialchars($profil['status'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Alamat</label>
-                    <input type="text" name="alamat" class="form-control" value="<?= htmlspecialchars($profil['alamat'] ?? '') ?>" required>
+                    <input type="text" name="alamat" class="form-control" value="<?= htmlspecialchars($profil['alamat'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Telp/Hp</label>
-                    <input type="text" name="hp" class="form-control" value="<?= htmlspecialchars($profil['hp'] ?? '') ?>" required>
+                    <input type="text" name="hp" class="form-control" value="<?= htmlspecialchars($profil['hp'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Suami/Istri</label>
-                    <input type="text" name="nama_pasangan" class="form-control" value="<?= htmlspecialchars($profil['nama_pasangan'] ?? '') ?>" required>
+                    <input type="text" name="nama_pasangan" class="form-control" value="<?= htmlspecialchars($profil['nama_pasangan'] ?? '') ?>">
                 </div>
             </div>
             <div class="d-flex flex-column container">
                 <div class="mb-3">
                     <label class="form-label">Upload Foto</label>
-                    <input type="file" name="foto" class="form-control" accept="image/*" required>
+                    <input type="file" name="foto" class="form-control" accept="image/*">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Keterangan Jabatan</label>
-                    <input type="text" name="keterangan_jabatan" class="form-control" value="<?= htmlspecialchars($profil['keterangan_jabatan'] ?? '') ?>" required>
+                    <input type="text" name="keterangan_jabatan" class="form-control" value="<?= htmlspecialchars($profil['keterangan_jabatan'] ?? '') ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nomor SK</label>
-                    <input type="text" name="no_sk" class="form-control" value="<?= htmlspecialchars($profil['no_sk'] ?? '') ?>" required>
+                    <input type="text" name="no_sk" class="form-control" value="<?= htmlspecialchars($profil['no_sk'] ?? '') ?>">
                 </div>
             </div>
         </div>

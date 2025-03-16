@@ -36,7 +36,7 @@ $conn->close();
         <input type="hidden" name="id_layanan" value="<?= htmlspecialchars($profil['id_layanan'] ?? '') ?>">
         <div class="mb-3">
             <label class="form-label">Keterangan pelayanan desa Desa</label>
-            <textarea class="form-control" name="layanan_desa" required><?= htmlspecialchars($profil['layanan_desa'] ?? '') ?></textarea>
+            <textarea class="form-control" name="layanan_desa"><?= htmlspecialchars($profil['layanan_desa'] ?? '') ?></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="/admin/admin_dashboard.php?page=layanan_desa/layanan_desa&subpage=layanan_desa" class="btn btn-secondary ms-3">Batal</a>

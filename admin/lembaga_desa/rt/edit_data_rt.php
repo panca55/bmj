@@ -80,23 +80,23 @@ $conn->close();
         <input type="hidden" name="id_rt" value="<?= htmlspecialchars($profil['id_rt'] ?? '') ?>">
         <div class="mb-3">
             <label class="form-label">Keterangan</label>
-            <input type="text" name="keterangan" class="form-control" value="<?= htmlspecialchars($profil['keterangan'] ?? '') ?>" required>
+            <input type="text" name="keterangan" class="form-control" value="<?= htmlspecialchars($profil['keterangan'] ?? '') ?>">
         </div>
         <div class="mb-3">
             <label class="form-label">Jabatan</label>
-            <input type="text" name="jabatan" class="form-control" value="<?= htmlspecialchars($profil['jabatan'] ?? '') ?>" required>
+            <input type="text" name="jabatan" class="form-control" value="<?= htmlspecialchars($profil['jabatan'] ?? '') ?>">
         </div>
         <div class="mb-3">
             <label class="form-label">Nama Lengkap</label>
-            <input type="text" name="nama" class="form-control" value="<?= htmlspecialchars($profil['nama'] ?? '') ?>" required>
+            <input type="text" name="nama" class="form-control" value="<?= htmlspecialchars($profil['nama'] ?? '') ?>">
         </div>
         <div class="mb-3">
             <label class="form-label">No Telp/Hp</label>
-            <input type="text" name="hp" class="form-control" value="<?= htmlspecialchars($profil['hp'] ?? '') ?>" required>
+            <input type="text" name="hp" class="form-control" value="<?= htmlspecialchars($profil['hp'] ?? '') ?>">
         </div>
         <div class="mb-3">
             <label class="form-label">Upload Foto</label>
-            <input type="file" name="foto" class="form-control" accept="image/*" required>
+            <input type="file" name="foto" class="form-control" accept="image/*">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="/admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt" class="btn btn-secondary ms-3">Batal</a>

@@ -73,7 +73,7 @@ $conn->close();
         <input type="hidden" name="id_profil_desa" value="<?= htmlspecialchars($profil['id_profil_desa'] ?? '') ?>">
         <div class="mb-3">
             <label class="form-label">Upload Monografi Kependudukan</label>
-            <input type="file" name="monografi_kependudukan" class="form-control" accept="image/*" required>
+            <input type="file" name="monografi_kependudukan" class="form-control" accept="image/*">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=monografi_kependudukan" class="btn btn-secondary ms-3">Batal</a>

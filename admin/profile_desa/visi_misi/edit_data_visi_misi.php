@@ -37,11 +37,11 @@ $conn->close();
         <input type="hidden" name="id_profil_desa" value="<?= htmlspecialchars($profil['id_profil_desa'] ?? '') ?>">
         <div class="mb-3">
             <label class="form-label">Visi Desa</label>
-            <textarea class="form-control" name="visi_desa" required><?= htmlspecialchars($profil['visi_desa'] ?? '') ?></textarea>
+            <textarea class="form-control" name="visi_desa"><?= htmlspecialchars($profil['visi_desa'] ?? '') ?></textarea>
         </div>
         <div class="mb-3">
             <label class="form-label">Misi Desa</label>
-            <textarea class="form-control" name="misi_desa" required><?= htmlspecialchars($profil['misi_desa'] ?? '') ?></textarea>
+            <textarea class="form-control" name="misi_desa"><?= htmlspecialchars($profil['misi_desa'] ?? '') ?></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=visi_misi" class="btn btn-secondary ms-3">Batal</a>

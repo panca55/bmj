@@ -48,7 +48,13 @@ $conn->close();
                     <tr>
                         <td><?= $index + 1; ?></td>
                         <td><?= htmlspecialchars($persyaratan['keterangan']); ?></td>
-                        <td><a href="<?= htmlspecialchars($persyaratan['file']); ?>" download>Download</a></td>
+                        <td>
+                            <?php if (!empty($persyaratan['file'])): ?>
+                                <a href="<?= htmlspecialchars($persyaratan['file']); ?>" download>Download</a>
+                            <?php else: ?>
+                                File tidak tersedia
+                            <?php endif; ?>
+                        </td>
                         <td>
                             <a href="/admin/admin_dashboard.php?page=transparansi/transparansi&subpage=data_laporan/edit_data_laporan&id=<?= $persyaratan['id_data_laporan']; ?>" class="btn btn-primary btn-sm">Edit</a>
                             <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">

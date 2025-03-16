@@ -69,23 +69,23 @@ $conn->close();
     <form method="post" class="mt-4" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Keterangan</label>
-            <input type="text" name="keterangan" class="form-control" required>
+            <input type="text" name="keterangan" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Jabatan</label>
-            <input type="text" name="jabatan" class="form-control" required>
+            <input type="text" name="jabatan" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Nama Lengkap</label>
-            <input type="text" name="nama" class="form-control" required>
+            <input type="text" name="nama" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">No Telp/Hp</label>
-            <input type="text" name="hp" class="form-control" required>
+            <input type="text" name="hp" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Upload Foto</label>
-            <input type="file" name="foto" class="form-control" accept="image/*" required>
+            <input type="file" name="foto" class="form-control" accept="image/*">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="/admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt" class="btn btn-secondary ms-3">Batal</a>

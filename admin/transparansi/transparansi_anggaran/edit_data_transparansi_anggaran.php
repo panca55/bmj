@@ -76,7 +76,7 @@ $conn->close();
     <form method="post" class="mt-4" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Keterangan</label>
-            <input type="text" name="keterangan" class="form-control" value="<?= htmlspecialchars($existingData['keterangan'] ?? '') ?>" required>
+            <input type="text" name="keterangan" class="form-control" value="<?= htmlspecialchars($existingData['keterangan'] ?? '') ?>">
         </div>
         <div class="mb-3">
             <label class="form-label">Upload APBDesa</label>

@@ -56,6 +56,8 @@ $conn->close();
         border-radius: 50%;
         text-decoration: none;
         transition: background-color 0.3s ease;
+        z-index: 1;
+        /* Ensure buttons are above the slides */
     }
 
     .prev:hover,
@@ -64,11 +66,13 @@ $conn->close();
     }
 
     .prev {
-        left: 10px;
+        left: -50px;
+        /* Position prev button to the left of the slide */
     }
 
     .next {
-        right: 10px;
+        right: -50px;
+        /* Position next button to the right of the slide */
     }
 
     .dots-container {
@@ -109,7 +113,7 @@ $conn->close();
         <h5>Kegiatan Pembangunan Desa Bumi Harjo Tahun <?= date('Y'); ?></h5>
         <div class="pb-2 pe-2 ps-2 w-100 text-start mb-2">
             <div class="d-flex flex-row justify-content-end my-2">
-                <a href="/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan/tambah_data_kegiatan_pembangunan"
+                <a href="/admin/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan/tambah_data_kegiatan_pembangunan"
                     class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
             </div>
             <div class="d-flex flex-column justify-content-between align-content-center align-items-center">

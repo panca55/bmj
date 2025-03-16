@@ -13,14 +13,15 @@ $conn->close();
 
 <div class="d-flex flex-column">
     <div class="d-flex flex-column text-center">
-        <h3 class="fw-bold">PROFIL</h3>
-        <h3>PERSYARATAN SURAT DESA BUMI HARJO</h3>
+        <h3 class="fw-bold">DATA LAPORAN</h3>
+        <h3>Data Laporan Desa Bumi Harjo Kecamatan Pinang Raya</h3>
+        <h3>Kabupaten Bengkulu Utara</h3>
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Permohonan Surat</th>
-                    <th>Download Blanko Isian Surat</th>
+                    <th>Data Laporan</th>
+                    <th>Download</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +29,13 @@ $conn->close();
                     <tr>
                         <td><?= $index + 1; ?></td>
                         <td><?= htmlspecialchars($persyaratan['keterangan']); ?></td>
-                        <td><a href="<?= htmlspecialchars($persyaratan['file']); ?>" download>Download</a></td>
+                        <td>
+                            <?php if (!empty($persyaratan['file'])): ?>
+                                <a href="<?= htmlspecialchars($persyaratan['file']); ?>" download>Download</a>
+                            <?php else: ?>
+                                File tidak tersedia
+                            <?php endif; ?>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

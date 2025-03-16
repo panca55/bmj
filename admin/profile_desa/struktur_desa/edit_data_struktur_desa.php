@@ -73,7 +73,7 @@ $conn->close();
         <input type="hidden" name="id_profil_desa" value="<?= htmlspecialchars($profil['id_profil_desa'] ?? '') ?>">
         <div class="mb-3">
             <label class="form-label">Upload Struktur Desa</label>
-            <input type="file" name="struktur_desa" class="form-control" accept="image/*" required>
+            <input type="file" name="struktur_desa" class="form-control" accept="image/*">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="/admin/admin_dashboard.php?page=profile_desa/profil_desa&subpage=struktur_desa" class="btn btn-secondary ms-3">Batal</a>

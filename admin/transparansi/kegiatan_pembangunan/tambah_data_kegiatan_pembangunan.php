@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Check file size
-    if ($_FILES['file']['size'] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
+    // if ($_FILES['file']['size'] > 500000) {
+    //     echo "Sorry, your file is too large.";
+    //     $uploadOk = 0;
+    // }
 
     // Allow certain file formats
     $allowedFileTypes = ['jpg', 'jpeg', 'png'];
@@ -63,11 +63,11 @@ $conn->close();
     <form method="post" class="mt-4" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Keterangan</label>
-            <input type="text" name="keterangan" class="form-control" required>
+            <input type="text" name="keterangan" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Upload Foto</label>
-            <input type="file" name="file" class="form-control" accept="image/*" required>
+            <input type="file" name="file" class="form-control" accept="image/*">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="/admin/admin_dashboard.php?page=transparansi/transparansi&subpage=kegiatan_pembangunan" class="btn btn-secondary ms-3">Batal</a>

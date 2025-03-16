@@ -46,15 +46,15 @@ $conn->close();
         <input type="hidden" name="id_kontak" value="<?= htmlspecialchars($id_kontak) ?>">
         <div class="mb-3">
             <label class="form-label">E-mail</label>
-            <textarea class="form-control" name="email" required><?= htmlspecialchars($email) ?></textarea>
+            <textarea class="form-control" name="email"><?= htmlspecialchars($email) ?></textarea>
         </div>
         <div class="mb-3">
             <label class="form-label">Facebook</label>
-            <textarea class="form-control" name="facebook" required><?= htmlspecialchars($facebook) ?></textarea>
+            <textarea class="form-control" name="facebook"><?= htmlspecialchars($facebook) ?></textarea>
         </div>
         <div class="mb-3">
             <label class="form-label">Instagram</label>
-            <textarea class="form-control" name="instagram" required><?= htmlspecialchars($instagram) ?></textarea>
+            <textarea class="form-control" name="instagram"><?= htmlspecialchars($instagram) ?></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="/admin/admin_dashboard.php?page=kontak_admin/kontak_admin" class="btn btn-secondary ms-3">Batal</a>

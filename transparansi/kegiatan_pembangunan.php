@@ -40,6 +40,8 @@ $conn->close();
         border-radius: 50%;
         text-decoration: none;
         transition: background-color 0.3s ease;
+        z-index: 1;
+        /* Ensure buttons are above the slides */
     }
 
     .prev:hover,
@@ -48,11 +50,13 @@ $conn->close();
     }
 
     .prev {
-        left: 10px;
+        left: -50px;
+        /* Position prev button to the left of the slide */
     }
 
     .next {
-        right: 10px;
+        right: -50px;
+        /* Position next button to the right of the slide */
     }
 
     .dots-container {

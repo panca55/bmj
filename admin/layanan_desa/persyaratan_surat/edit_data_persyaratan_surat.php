@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Check file size
-    if ($_FILES['file']['size'] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
+    // if ($_FILES['file']['size'] > 500000) {
+    //     echo "Sorry, your file is too large.";
+    //     $uploadOk = 0;
+    // }
 
     // Allow certain file formats
     $allowedFileTypes = ['jpg', 'jpeg', 'png', 'gif', 'pdf', 'doc', 'docx'];
@@ -73,11 +73,11 @@ $conn->close();
     <form method="post" class="mt-4" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Keterangan</label>
-            <input type="text" name="keterangan" class="form-control" value="<?= htmlspecialchars($existingData['keterangan'] ?? '') ?>" required>
+            <input type="text" name="keterangan" class="form-control" value="<?= htmlspecialchars($existingData['keterangan'] ?? '') ?>">
         </div>
         <div class="mb-3">
             <label class="form-label">Upload File</label>
-            <input type="file" name="file" class="form-control" accept="*/*" required>
+            <input type="file" name="file" class="form-control" accept="*/*">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="/admin/admin_dashboard.php?page=layanan_desa/layanan_desa&subpage=persyaratan_surat" class="btn btn-secondary ms-3">Batal</a>

@@ -14,7 +14,6 @@ $sql = "SELECT keterangan, id_transparansi_anggaran FROM tb_transparansi_anggara
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $keterangan = $row['keterangan'] ?? 'Belum ada keterangan';
-$id = $row['id_transparansi_anggaran'];
 $conn->close();
 ?>
 
