@@ -72,7 +72,7 @@ $conn->close();
 
 <div class="container mt-5">
     <div class="judul text-center">
-        <h2>Tambah Data Daftar Nama-Nama</h2>
+        <h2>Edit Data Daftar Nama-Nama</h2>
         <h2>Rukun Tetangga (RT)</h2>
         <h2>Desa Bumi Harjo</h2>
     </div>

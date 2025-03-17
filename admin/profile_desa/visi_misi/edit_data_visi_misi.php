@@ -32,7 +32,7 @@ $conn->close();
 ?>
 
 <div class="container mt-5">
-    <h2>Tambah Data Visi Misi Desa</h2>
+    <h2>Edit Data Visi Misi Desa</h2>
     <form method="post" class="mt-4">
         <input type="hidden" name="id_profil_desa" value="<?= htmlspecialchars($profil['id_profil_desa'] ?? '') ?>">
         <div class="mb-3">

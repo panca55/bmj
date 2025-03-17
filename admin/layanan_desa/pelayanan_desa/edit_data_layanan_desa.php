@@ -31,7 +31,7 @@ $conn->close();
 ?>
 
 <div class="container mt-5">
-    <h2>Tambah Data layanan_desa Desa</h2>
+    <h2>Edit Data layanan_desa Desa</h2>
     <form method="post" class="mt-4">
         <input type="hidden" name="id_layanan" value="<?= htmlspecialchars($profil['id_layanan'] ?? '') ?>">
         <div class="mb-3">

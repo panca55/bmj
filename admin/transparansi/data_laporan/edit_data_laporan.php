@@ -69,7 +69,7 @@ $conn->close();
 ?>
 
 <div class="container mt-5">
-    <h2>Edit Data Persyaratan Surat</h2>
+    <h2>Edit Data Laporan</h2>
     <form method="post" class="mt-4" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Keterangan</label>
