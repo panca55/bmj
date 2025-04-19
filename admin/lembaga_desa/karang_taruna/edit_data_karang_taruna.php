@@ -12,57 +12,41 @@ $stmt->close();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/karang_taruna/';
-    $uploadFile = $uploadDir . basename($_FILES['file']['name']);
-    $uploadOk = 1;
-    $fileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+    $foto = $existingData['foto']; // Default to existing photo if no new file is uploaded
 
-    // Check if file is a actual file or fake file
-    if (file_exists($_FILES['file']['tmp_name'])) {
-        $uploadOk = 1;
-    } else {
-        echo "File is not valid.";
-        $uploadOk = 0;
-    }
+    if (isset($_FILES['file']) && file_exists($_FILES['file']['tmp_name'])) {
+        $uploadFile = $uploadDir . basename($_FILES['file']['name']);
+        $fileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
 
-    // Check file size
-    // if ($_FILES['file']['size'] > 500000) {
-    //     echo "Sorry, your file is too large.";
-    //     $uploadOk = 0;
-    // }
+        // Allow certain file formats
+        $allowedFileTypes = ['jpg', 'jpeg', 'png'];
+        if (in_array($fileType, $allowedFileTypes)) {
+            // Ensure the upload directory exists
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
 
-    // Allow certain file formats
-    $allowedFileTypes = ['jpg', 'jpeg', 'png'];
-    if (!in_array($fileType, $allowedFileTypes)) {
-        echo "Sorry, only JPG, JPEG, and PNG files are allowed.";
-        $uploadOk = 0;
-    }
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    } else {
-        // Ensure the upload directory exists
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
-
-        if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
-            $foto = '/uploads/karang_taruna/' . basename($_FILES['file']['name']);
-            $keterangan = $_POST['keterangan'];
-            $id = $_POST['id_karang_taruna'];
-
-            // Update existing data
-            $stmt = $conn->prepare("UPDATE tb_karang_taruna SET keterangan = ?, foto = ? WHERE id_karang_taruna = ?");
-            $stmt->bind_param("ssi", $keterangan, $foto, $id);
-
-            $stmt->execute();
-            $stmt->close();
-            header("Location: /admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=karang_taruna");
-            exit();
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
+                $foto = '/uploads/karang_taruna/' . basename($_FILES['file']['name']);
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            echo "Sorry, only JPG, JPEG, and PNG files are allowed.";
         }
     }
+
+    $keterangan = $_POST['keterangan'];
+    $id = $_POST['id_karang_taruna'];
+
+    // Update existing data
+    $stmt = $conn->prepare("UPDATE tb_karang_taruna SET keterangan = ?, foto = ? WHERE id_karang_taruna = ?");
+    $stmt->bind_param("ssi", $keterangan, $foto, $id);
+
+    $stmt->execute();
+    $stmt->close();
+    header("Location: /admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=karang_taruna");
+    exit();
 }
 ?>
 

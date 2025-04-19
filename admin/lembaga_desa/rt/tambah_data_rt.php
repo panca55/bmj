@@ -3,58 +3,43 @@ include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/rt/';
-    $uploadFile = $uploadDir . basename($_FILES['foto']['name']);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+    $foto = null; // Default value if no file is uploaded
 
-    // Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES['foto']['tmp_name']);
-    if ($check !== false) {
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
+    if (isset($_FILES['foto']) && file_exists($_FILES['foto']['tmp_name'])) {
+        $uploadFile = $uploadDir . basename($_FILES['foto']['name']);
+        $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
 
-    // Check file size
-    if ($_FILES['foto']['size'] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
+        // Allow certain file formats
+        $allowedFileTypes = ['jpg', 'jpeg', 'png', 'gif'];
+        if (in_array($imageFileType, $allowedFileTypes)) {
+            // Ensure the upload directory exists
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
 
-    // Allow certain file formats
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    } else {
-        // Ensure the upload directory exists
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
-
-        if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadFile)) {
-            $foto = '/uploads/rt/' . basename($_FILES['foto']['name']);
-            $nama = $_POST['nama'];
-            $keterangan = $_POST['keterangan'];
-            $jabatan = $_POST['jabatan'];
-            $hp = $_POST['hp'];
-            // Insert data baru
-            $stmt = $conn->prepare("INSERT INTO tb_rt (nama, keterangan, jabatan, hp, foto) VALUES (?, ?, ?, ?, ?)"); // updated to reflect changes
-            $stmt->bind_param("sssss", $nama, $keterangan, $jabatan, $hp, $foto); // updated to reflect changes
-
-            $stmt->execute();
-            $stmt->close();
-            header("Location: /admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt");
-            exit();
+            if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadFile)) {
+                $foto = '/uploads/rt/' . basename($_FILES['foto']['name']);
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         }
     }
+
+    $nama = $_POST['nama'];
+    $keterangan = $_POST['keterangan'];
+    $jabatan = $_POST['jabatan'];
+    $hp = $_POST['hp'];
+
+    // Insert data baru
+    $stmt = $conn->prepare("INSERT INTO tb_rt (nama, keterangan, jabatan, hp, foto) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $nama, $keterangan, $jabatan, $hp, $foto);
+
+    $stmt->execute();
+    $stmt->close();
+    header("Location: /admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt");
+    exit();
 }
 
 $conn->close();

@@ -3,63 +3,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = intval($_POST['id_rt']);
-    $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/rt/';
-    $uploadFile = $uploadDir . basename($_FILES['foto']['name']);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
-
-    // Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES['foto']['tmp_name']);
-    if ($check !== false) {
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-
-    // Check file size
-    if ($_FILES['foto']['size'] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-
-    // Allow certain file formats
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    } else {
-        // Ensure the upload directory exists
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
-
-        if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadFile)) {
-            $foto = '/uploads/rt/' . basename($_FILES['foto']['name']);
-            $nama = $_POST['nama'];
-            $jabatan = $_POST['jabatan'];
-            $keterangan = $_POST['keterangan'];
-            $hp = $_POST['hp'];
-
-            // Update data
-            $stmt = $conn->prepare("UPDATE tb_rt SET keterangan=?, nama=?, hp=?, jabatan=?, foto=? WHERE id_rt=?");
-            $stmt->bind_param("sssssi", $keterangan, $nama, $hp, $jabatan, $foto, $id);
-            $stmt->execute();
-            $stmt->close();
-            header("Location: /admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt");
-            exit();
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
-    }
-}
-
 // Fetch data perangkat desa
 $stmt = $conn->prepare("SELECT * FROM tb_rt WHERE id_rt = ? LIMIT 1");
 $stmt->bind_param("i", $id);
@@ -67,6 +10,48 @@ $stmt->execute();
 $result = $stmt->get_result();
 $profil = $result->fetch_assoc();
 $stmt->close();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = intval($_POST['id_rt']);
+    $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/rt/';
+    $foto = $profil['foto']; // Default to existing photo if no new file is uploaded
+
+    if (isset($_FILES['foto']) && file_exists($_FILES['foto']['tmp_name'])) {
+        $uploadFile = $uploadDir . basename($_FILES['foto']['name']);
+        $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+
+        // Allow certain file formats
+        $allowedFileTypes = ['jpg', 'jpeg', 'png', 'gif'];
+        if (in_array($imageFileType, $allowedFileTypes)) {
+            // Ensure the upload directory exists
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadFile)) {
+                $foto = '/uploads/rt/' . basename($_FILES['foto']['name']);
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        } else {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        }
+    }
+
+    $nama = $_POST['nama'];
+    $jabatan = $_POST['jabatan'];
+    $keterangan = $_POST['keterangan'];
+    $hp = $_POST['hp'];
+
+    // Update data
+    $stmt = $conn->prepare("UPDATE tb_rt SET keterangan=?, nama=?, hp=?, jabatan=?, foto=? WHERE id_rt=?");
+    $stmt->bind_param("sssssi", $keterangan, $nama, $hp, $jabatan, $foto, $id);
+    $stmt->execute();
+    $stmt->close();
+    header("Location: /admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=rt");
+    exit();
+}
+
 $conn->close();
 ?>
 

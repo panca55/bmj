@@ -6,38 +6,15 @@ $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = intval($_POST['id_perangkat_desa']);
     $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/perangkat_desa/';
-    $uploadFile = $uploadDir . basename($_FILES['foto']['name']);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
-    $foto = $_POST['existing_foto']; // Default to existing photo
+    $foto = $_POST['existing_foto']; // Default to existing photo if no new file is uploaded
 
-    // Check if a new file is uploaded
-    if ($_FILES['foto']['error'] == UPLOAD_ERR_OK) {
-        // Check if image file is a actual image or fake image
-        $check = getimagesize($_FILES['foto']['tmp_name']);
-        if ($check !== false) {
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
-
-        // Check file size
-        if ($_FILES['foto']['size'] > 500000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
+    if (isset($_FILES['foto']) && file_exists($_FILES['foto']['tmp_name'])) {
+        $uploadFile = $uploadDir . basename($_FILES['foto']['name']);
+        $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
 
         // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-        }
-
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        } else {
+        $allowedFileTypes = ['jpg', 'jpeg', 'png', 'gif'];
+        if (in_array($imageFileType, $allowedFileTypes)) {
             // Ensure the upload directory exists
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
@@ -48,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }
+        } else {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         }
     }
 
