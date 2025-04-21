@@ -1,11 +1,11 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
 
-$id = 3;
 // Ambil data bpd desa dalam satu query
-$sql = "SELECT * FROM tb_bpd LIMIT 1";
+$sql = "SELECT * FROM tb_bpd ORDER BY id_bpd DESC LIMIT 1";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+$id = $row['id_bpd'] ?? 'Belum ada keterangan';
 $keterangan = $row['keterangan'] ?? 'Belum ada keterangan';
 $foto = $row['foto'] ?? '';
 // Hapus data jika ada request POST 'delete'
@@ -41,7 +41,7 @@ $conn->close();
                 <a href="/admin/admin_dashboard.php?page=lembaga_desa/lembaga_desa&subpage=bpd/tambah_data_bpd"
                     class="fw-bold text-decoration-none text-success" id="tambah-data-link">Tambah Data</a>
             </div>
-            <div class="keterangan rounded-2 border-2 border-black border p-2 mb-2 text-start">
+            <div class="keterangan rounded-2 border-2 border-black border p-2 mb-2 text-start" style="word-wrap: break-word;">
                 <?= htmlspecialchars($keterangan); ?>
             </div>
         </div>
@@ -51,7 +51,7 @@ $conn->close();
             class="btn btn-primary me-2">Edit</a>
         <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
             <input type="hidden" name="delete" value="<?= $id; ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
+            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
         </form>
     </div>
 </div>

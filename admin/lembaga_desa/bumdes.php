@@ -1,12 +1,12 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
 
-$id = 3;
-// Ambil data bumdes desa dalam satu query
-$sql = "SELECT * FROM tb_bumdes LIMIT 1";
+// Update the SQL query to fetch the last record
+$sql = "SELECT * FROM tb_bumdes ORDER BY id_bumdes DESC LIMIT 1";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $keterangan = $row['keterangan'] ?? 'Belum ada keterangan';
+$id = $row['id_bumdes'] ?? 'Belum ada keterangan';
 $foto = $row['foto'] ?? '';
 // Hapus data jika ada request POST 'delete'
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
@@ -55,7 +55,7 @@ $conn->close();
             class="btn btn-primary me-2">Edit</a>
         <form method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" style="display:inline;">
             <input type="hidden" name="delete" value="<?= $id; ?>">
-            <button type="submit" class="btn btn-danger">Hapus</button>
+            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
         </form>
     </div>
 </div>

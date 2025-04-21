@@ -3,7 +3,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
 
 
 // Fetch existing data
-$stmt = $conn->prepare("SELECT * FROM tb_bumdes LIMIT 1");
+$stmt = $conn->prepare("SELECT * FROM tb_bumdes ORDER BY id_bumdes DESC LIMIT 1");
 $id = isset($_GET['id_bumdes']) ? intval($_GET['id_bumdes']) : 0;
 $stmt->execute();
 $result = $stmt->get_result();
