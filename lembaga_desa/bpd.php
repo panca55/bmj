@@ -3,7 +3,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/db_connect.php';
 
 $id = 3;
 // Ambil data bpd desa dalam satu query
-$sql = "SELECT * FROM tb_bpd LIMIT 1";
+$sql = "SELECT * FROM tb_bpd ORDER BY id_bpd LIMIT 1";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $keterangan = $row['keterangan'] ?? 'Belum ada keterangan';
